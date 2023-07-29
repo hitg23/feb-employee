@@ -1,11 +1,14 @@
+import { useState } from 'react';
+import Container from './components/Container/Container';
+import Employee from './components/Employee/Employee';
 
-import './App.css';
-
-function App() {
+const App= ()=> {
+const [employeesData, setEmployeesData]= useState([])
   return (
-    <div className="App">
-      <h1>Welcome to Employee App</h1>
-     
+    <div>
+     <Container>
+      <Employee employeesData={employeesData} setEmployeesData={setEmployeesData}/> 
+     </Container>
     </div>
   );
 }
