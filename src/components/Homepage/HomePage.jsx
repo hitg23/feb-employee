@@ -1,6 +1,15 @@
 import React from 'react'
 import EmployeeList from '../EmployeeList/EmployeeList'
 import employeeData from '../../data'
+import {styled }from "styled-components"
+// import Container from '../Container/Container'
+
+const StyledHomePage= styled.div`
+  background-color:#fff;
+  width: 50%;
+  height:70%;
+  border-color: 1px solid orange
+`
 
 function HomePage({employeesData, setEmployeesData}) {
   const handleChange=  ()=>{
@@ -10,17 +19,19 @@ function HomePage({employeesData, setEmployeesData}) {
   console.log(employeeData);
 
   return (
-    <div style={StyledHome}>
+    <StyledHomePage>
+      
       <EmployeeList employeesData=
       {employeesData} setEmployeesData={setEmployeesData}/> 
       <button onClick={handleChange} type="button">UpdateEmployee</button>
-    </div>
+    
+    </StyledHomePage>
   )
 }
-const StyledHome = {
-  backgroundColor: "blue",
-  width: "50%",
-  height: "1600px"
-}
+// const StyledHome = {
+//   backgroundColor: "blue",
+//   width: "50%",
+//   height: "100vh"
+// }
 
 export default HomePage

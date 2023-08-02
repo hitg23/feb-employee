@@ -6,9 +6,9 @@ const App= ()=> {
 const [employeesData, setEmployeesData]= useState([])
   return (
     <div>
-     <Container>
+     
       <Employee employeesData={employeesData} setEmployeesData={setEmployeesData}/> 
-     </Container>
+    
     </div>
   );
 }
