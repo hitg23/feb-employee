@@ -1,6 +1,6 @@
-.container{
-   max-width: 1200px; 
-   background-color:teal;
-   height: 200vh;
-   margin: 0 auto;
+.container {
+  max-width: 1200px;
+  background-color: lightgray;
+  height: 200vh;
+  margin: 0 auto;
 }
