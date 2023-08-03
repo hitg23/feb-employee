@@ -1,32 +1,25 @@
-import React from 'react'
-import EmployeeList from '../EmployeeList/EmployeeList'
-import employeeData from '../../data'
-import {styled }from "styled-components"
+import React from "react";
+import EmployeeList from "../EmployeeList/EmployeeList";
+// import employeeData from "../../data";
+import { styled } from "styled-components";
 // import Container from '../Container/Container'
 
-const StyledHomePage= styled.div`
-  background-color:#fff;
+const StyledHomePage = styled.div`
+  background-color: #fff;
   width: 50%;
-  height:70%;
-  border-color: 1px solid orange
-`
+  height: 70%;
+  border: 1px solid orange;
+`;
 
-function HomePage({employeesData, setEmployeesData}) {
-  const handleChange=  ()=>{
-    setEmployeesData(employeeData);
-  };
-  console.log(employeesData);
-  console.log(employeeData);
-
+function HomePage({ employeesData, setEmployeesData }) {
   return (
     <StyledHomePage>
-      
-      <EmployeeList employeesData=
-      {employeesData} setEmployeesData={setEmployeesData}/> 
-      <button onClick={handleChange} type="button">UpdateEmployee</button>
-    
+      <EmployeeList
+        employeesData={employeesData}
+        setEmployeesData={setEmployeesData}
+      />
     </StyledHomePage>
-  )
+  );
 }
 // const StyledHome = {
 //   backgroundColor: "blue",
@@ -34,4 +27,4 @@ function HomePage({employeesData, setEmployeesData}) {
 //   height: "100vh"
 // }
 
-export default HomePage
+export default HomePage;
