@@ -9,6 +9,7 @@ const StyledContainer = styled.div`
   display: flex;
   height: 100vh;
   padding: 4rem 2rem;
+  gap: 10px;
 `;
 function Container({ children }) {
   return <StyledContainer>{children}</StyledContainer>;
