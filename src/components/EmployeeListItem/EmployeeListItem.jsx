@@ -3,24 +3,23 @@ import { styled } from "styled-components";
 
 const StyledEmplList = styled.div`
   display: flex;
-  background-color: white;
+  background-color: lightblue;
   margin: 5px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
-  align-item: center;
+
   padding: 5px 10px;
 `;
 
 const StyledImg = styled.img`
+  margin-top: 20px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  border: 5px solid #ddd3a4;
 `;
 const StyledContent = styled.div`
-  margin-left: 10px 
-  text-align:left
-  p, h3 {
-    margin: 0;
-  }
+  margin-left: 10px;
+  text-align: center;
 `;
 
 function EmployeeListItem({ employeesData }) {
