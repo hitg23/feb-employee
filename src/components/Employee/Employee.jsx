@@ -3,6 +3,7 @@ import React from "react";
 import HomePage from "../Homepage/HomePage";
 import EmployeeDetail from "../EmployeeDetail/EmployeeDetail";
 import Container from "../Container/Container";
+import AddEmployee from "../AddEmployee/AddEmployee";
 
 function Employee({ employeesData, setEmployeesData }) {
   return (
@@ -14,6 +15,7 @@ function Employee({ employeesData, setEmployeesData }) {
         />
         <EmployeeDetail />
       </Container>
+      <AddEmployee />
     </div>
   );
 }
