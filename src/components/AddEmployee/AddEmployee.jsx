@@ -1,72 +1,118 @@
-import React from "react";
-import styled from "styled-components";
-const StyledFormContainer = styled.div`
-  width: 50%;
-  margin: 30px auto;
-  display: flex;
-  flex-direction: column;
-`;
+import React, { useState, useEffect } from "react";
+// import styled from "styled-components";
+import {
+  StyledFormContainer,
+  StyledForm,
+  StyledInputWrapper,
+  StyledLabel,
+  StyledInput,
+  StyledButton,
+} from "./StyledComponenet";
 
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-const StyledInputWrapper = styled.div`
-  display: flex;
-  gap: 16px;
-  margin: 5px;
-  width: 80%;
-`;
-const StyledLabel = styled.label`
-  flex: 1;
-  text-align: right;
-`;
+export default function AddEmployee({ employeesData, setEmployeesData }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    title: "",
+    imageUrl: "",
+    callMobile: "",
+    callOffice: "",
+    Sms: "",
+    email: "",
+  });
 
-const StyledInput = styled.input`
-  flex: 2;
-  border: 1px solid #333;
-  border-radius: 5px;
-  padding: 5px;
-`;
-const StyledButton = styled.button`
-  padding: 10px;
-  border-radius: 5px;
-  color: white;
-  background-color: blue;
-  margin: 5px auto;
-  font-size: 18px;
-  align-item: left;
-`;
+  //   collecting the user input
+  const handleFormchange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    console.log(value);
+  };
 
-export default function AddEmployee() {
+  //   useEffect(() => {
+  //     console.log(formData);
+  //   }, [formData]);
+  // updating the formData state or handling the form submittion
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setEmployeesData([...employeesData, formData]);
+    setFormData({
+      name: "",
+      title: "",
+      imageUrl: "",
+      callMobile: "",
+      callOffice: "",
+      Sms: "",
+      email: "",
+    });
+
+    // console.log("handle Submit");
+  };
   return (
     <StyledFormContainer>
       <h2 style={{ textAlign: "center" }}>AddEmployee</h2>
-      <StyledForm action="">
+      <StyledForm action="" onSubmit={handleSubmit}>
         <StyledInputWrapper>
           <StyledLabel htmlFor="">Name :</StyledLabel>
-          <StyledInput type="text" value="" />
+          <StyledInput
+            name="name"
+            type="text"
+            value={formData.name}
+            onChange={handleFormchange}
+          />
         </StyledInputWrapper>
         <StyledInputWrapper>
-          <StyledLabel htmlFor="">Occupation :</StyledLabel>
-          <StyledInput type="text" value="" />
+          <StyledLabel htmlFor="">title :</StyledLabel>
+          <StyledInput
+            name="title"
+            type="text"
+            value={formData.title}
+            onChange={handleFormchange}
+          />
+        </StyledInputWrapper>
+        <StyledInputWrapper>
+          <StyledLabel htmlFor="">imageUrl :</StyledLabel>
+          <StyledInput
+            name="imageUrl"
+            type="text"
+            value={formData.imageUrl}
+            onChange={handleFormchange}
+          />
         </StyledInputWrapper>
         <StyledInputWrapper>
           <StyledLabel htmlFor="">Call Mobile :</StyledLabel>
-          <StyledInput type="text" value="" />
+          <StyledInput
+            name="callMobile"
+            type="text"
+            value={formData.callMobile}
+            onChange={handleFormchange}
+          />
         </StyledInputWrapper>
         <StyledInputWrapper>
           <StyledLabel htmlFor="">Call Office :</StyledLabel>
-          <StyledInput type="text" value="" />
+          <StyledInput
+            name="callOffice"
+            type="text"
+            value={formData.callOffice}
+            onChange={handleFormchange}
+          />
         </StyledInputWrapper>
         <StyledInputWrapper>
           <StyledLabel htmlFor="">SMS :</StyledLabel>
-          <StyledInput type="text" value="" />
+          <StyledInput
+            name="Sms"
+            type="text"
+            value={formData.Sms}
+            onChange={handleFormchange}
+          />
         </StyledInputWrapper>
         <StyledInputWrapper>
           <StyledLabel htmlFor="">Email :</StyledLabel>
-          <StyledInput type="text" value="" />
+          <StyledInput
+            name="email"
+            type="text"
+            value={formData.email}
+            onChange={handleFormchange}
+          />
         </StyledInputWrapper>
 
         <StyledButton>Add Employee</StyledButton>
