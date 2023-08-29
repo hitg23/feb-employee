@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { StyledImg } from "../EmployeeListItem/EmployeeListItem";
+import { StyledContent } from "../EmployeeListItem/EmployeeListItem";
+import { StyledEmplList } from "../EmployeeListItem/EmployeeListItem";
+
 import { styled } from "styled-components";
-// import { StyledImg } from "../EmployeeListItem/EmployeeListItem";
-// import { StyledContent } from "../EmployeeListItem/EmployeeListItem";
-// import { StyledEmplList } from "../EmployeeListItem/EmployeeListItem";
 
 const StyledEmpDetail = styled.div`
   width: 50%;
@@ -19,47 +20,45 @@ const StyledEmpDetail = styled.div`
 //   padding: 5px;
 // `;
 
-function EmployeeDetail() {
-  return <StyledEmpDetail>Employee Detail</StyledEmpDetail>;
-  // function employeeDetailList(employee) {
-  //   return (
-  //     <StyledEmplList>
-  //       <StyledImg src={employee.imageUrl} alt="person image" />
-  //       <StyledContent>
-  //         <h3>{employee.name}</h3>
-  //         <h3>{employee.occupation}</h3>
-
-  //         <StyledDetail>
-  //           <p>Call Mobile</p>
-  //           <h6>{employee.callMobile}</h6>
-  //         </StyledDetail>
-
-  //         <StyledDetail>
-  //           <p>Call Office</p>
-  //           <h6>{employee.callOffice}</h6>
-  //         </StyledDetail>
-
-  //         <StyledDetail>
-  //           <p>SMS</p>
-  //           <h6>{employee.sms}</h6>
-  //         </StyledDetail>
-
-  //         <StyledDetail>
-  //           <p>Email</p>
-  //           <h6>{employee.email}</h6>
-  //         </StyledDetail>
-  //       </StyledContent>
-  //     </StyledEmplList>
-  //   );
-  // }
-  // return (
-  //   <StyledEmpDetail>{employeesData.map(employeeDetailList)}</StyledEmpDetail>
-  // );
-}
 // const StyledEmployee = {
 //   backgroundColor: "red",
 //   width: "50%",
-//   height: "400px"
-// }
+//   height: "400px",
+// };
+// update the detail page
+function EmployeeDetail({ employeesData, setEmployeesData }) {
+  const [empDetail, setEmpDetail] = useState([]);
+  const employeeDetail = (employee) => {
+    return (
+      <StyledEmplList>
+        <StyledImg src={employee.imageUrl} alt="person image" />
+        <StyledContent>
+          <h3>{employee.name}</h3>
+          <h3>{employee.title}</h3>
+          <div>
+            <h4>{employee.callMobile}</h4>
+          </div>
+          <div>
+            <h4>{employee.callOffice}</h4>
+          </div>
+          <div>
+            <h4>{employee.sms}</h4>
+          </div>
+          <div>
+            <h4>{employee.email}</h4>
+          </div>
+        </StyledContent>
+      </StyledEmplList>
+    );
+    setEmployeesData();
+  };
+
+  return (
+    <StyledEmpDetail>
+      Employee Detail
+      <div>{employeesData.map(employeeDetail)}</div>
+    </StyledEmpDetail>
+  );
+}
 
 export default EmployeeDetail;

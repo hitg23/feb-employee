@@ -15,10 +15,15 @@ const [employeesData, setEmployeesData]= useState(employeeData)
 // useEffect(()=>{
 // getEmployeesData();
 // }, [])
+
+ const handleDetail=(empDetail)=>{
+  
+
+ }  
   return (
     <div>
      
-      <Employee employeesData={employeesData} setEmployeesData={setEmployeesData}/> 
+    <Employee employeesData={employeesData} setEmployeesData={setEmployeesData} handleDetail={handleDetail} /> 
     
     </div>
   );

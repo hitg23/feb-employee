@@ -23,9 +23,9 @@ export const StyledContent = styled.div`
 `;
 
 function EmployeeListItem({ employeesData }) {
-  function handleDetail() {
-    // console.log("mouseOver");
-  }
+  // function handleDetail() {
+  //   // console.log("mouseOver");
+  // }
   function employeeList(employee) {
     return (
       <StyledEmplList key={employee._id}>
@@ -41,9 +41,7 @@ function EmployeeListItem({ employeesData }) {
       </StyledEmplList>
     );
   }
-  return (
-    <div onMouseMove={handleDetail}>{employeesData.map(employeeList)}</div>
-  );
+  return <div>{employeesData.map(employeeList)}</div>;
 }
 
 export default EmployeeListItem;
