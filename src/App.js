@@ -1,8 +1,10 @@
-import { useState, useEffect} from 'react';
-
-
-import Employee from './components/Employee/Employee';
+import { useState } from 'react';
 import employeeData from './data'
+import Nav from './components/Nav/Nav';
+import {Routes, Route} from 'react-router-dom'
+import HomePage from './components/Pages/HomePage';
+import AddEmployeePage from './components/Pages/AddEmployeePage';
+import EmployeeListPage from './components/Pages/EmployeeListPage';
 
 const App= ()=> {
 const [employeesData, setEmployeesData]= useState(employeeData)
@@ -16,15 +18,16 @@ const [employeesData, setEmployeesData]= useState(employeeData)
 // getEmployeesData();
 // }, [])
 
- const handleDetail=(empDetail)=>{
-  
-
- }  
+ 
   return (
     <div>
-     
-    <Employee employeesData={employeesData} setEmployeesData={setEmployeesData} handleDetail={handleDetail} /> 
-    
+     <Nav/>
+     <Routes>  
+        <Route path= '/' element= {<HomePage/>}/>
+        <Route path= '/add-employee' element= {<AddEmployeePage employeesData={employeesData} setEmployeesData= {setEmployeesData}/>}/>
+        <Route path= '/employee-list' element= {<EmployeeListPage employeesData={employeesData} setEmployeesData= {setEmployeesData}/>}/>
+       
+    </Routes> 
     </div>
   );
 }
