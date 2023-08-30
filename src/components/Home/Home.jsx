@@ -1,6 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
+  const handleLogInNavigate = () => {
+    navigate("/login");
+  };
   return (
     <div>
       <h2>Welcome to the Employee App</h2>
@@ -9,7 +14,7 @@ export default function Home() {
         doloremque quas, consequatur consectetur odio tempore dolorum
         perspiciatis. Officiis, dolorem commodi?
       </p>
-      <button>Log In</button>
+      <button onClick={handleLogInNavigate}>Log In</button>
       <button>Sign In</button>
     </div>
   );
