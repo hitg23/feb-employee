@@ -3,13 +3,8 @@ import React from "react";
 import HomePage from "../Homepage/HomePage";
 import EmployeeDetail from "../EmployeeDetail/EmployeeDetail";
 import Container from "../Container/Container";
-import AddEmployee from "../AddEmployee/AddEmployee";
 
-function Employee({
-  employeesData,
-  setEmployeesData,
-  handleDetail ,
-}) {
+function Employee({ employeesData, setEmployeesData, handleDetail }) {
   return (
     <div>
       <Container>
@@ -24,10 +19,6 @@ function Employee({
           handleDetail={handleDetail}
         />
       </Container>
-      <AddEmployee
-        employeesData={employeesData}
-        setEmployeesData={setEmployeesData}
-      />
     </div>
   );
 }
