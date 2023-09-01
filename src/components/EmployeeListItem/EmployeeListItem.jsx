@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { styled } from "styled-components";
 import { EmployeeContext } from "../../Context";
+import EmployeeDetail from "../EmployeeDetail/EmployeeDetail";
 
 export const StyledEmplList = styled.div`
   display: flex;
@@ -24,24 +25,55 @@ export const StyledContent = styled.div`
   text-align: center;
 `;
 
+// function employeeList(employee) {
+//   return (
+//     <StyledEmplList
+//       onClick={() => {
+//         handleEmployee(employee.id);
+//       }}
+//       key={employee.id}
+//     >
+//       <StyledImg src={employee.imageUrl} alt="person image" />
+//       <StyledContent>
+//         <h3>{employee.name}</h3>
+//         <h3>{employee.title}</h3>
+//       </StyledContent>
+//     </StyledEmplList>
+//   );
+// }
+
 function EmployeeListItem() {
-  const { employeesData } = useContext(EmployeeContext);
-  function employeeList(employee) {
-    return (
-      <StyledEmplList key={employee._id}>
-        <StyledImg src={employee.imageUrl} alt="person image" />
-        <StyledContent>
-          <h3>{employee.name}</h3>
-          <h3>{employee.title}</h3>
-          {/* <h4>{employee.callMobile}</h4>
-             <h4>{employee.callOffice}</h4>
-             <h4>{employee.sms}</h4>
-             <h4>{employee.email}</h4> */}
-        </StyledContent>
-      </StyledEmplList>
+  const { employeesData, setEmployessDetail } = useContext(EmployeeContext);
+  const handleEmployee = (id) => {
+    const EmployeeDetailInfo = employeesData.find(
+      (employee) => employee.id === id
     );
-  }
-  return <div>{employeesData.map(employeeList)}</div>;
+    // console.log(EmployeeDetailInfo);
+    setEmployessDetail(EmployeeDetailInfo);
+  };
+
+  return (
+    <div>
+      <>
+        {employeesData.map((employee) => {
+          return (
+            <StyledEmplList
+              onClick={() => {
+                handleEmployee(employee.id);
+              }}
+              key={employee.id}
+            >
+              <StyledImg src={employee.imageUrl} alt="person image" />
+              <StyledContent>
+                <h3>{employee.name}</h3>
+                <h3>{employee.title}</h3>
+              </StyledContent>
+            </StyledEmplList>
+          );
+        })}
+      </>
+    </div>
+  );
 }
 
 export default EmployeeListItem;

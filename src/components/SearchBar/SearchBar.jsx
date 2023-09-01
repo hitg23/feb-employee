@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { EmployeeContext } from "../../Context";
 
 const StyledInput = styled.input`
   width: 90%;
@@ -13,8 +14,9 @@ const StyledInput = styled.input`
   margin: 4px;
 `;
 
-export default function SearchBar({ employeesData, setEmployeesData }) {
+export default function SearchBar() {
   const [searchItem, setSearchItem] = useState("");
+  const { employeesData, setEmployeesData } = useContext(EmployeeContext);
   const handleChange = (event) => {
     setSearchItem(event.target.value);
   };
