@@ -1,5 +1,7 @@
 import React from "react";
+import { useContext } from "react";
 import { styled } from "styled-components";
+import { EmployeeContext } from "../../Context";
 
 export const StyledEmplList = styled.div`
   display: flex;
@@ -22,10 +24,8 @@ export const StyledContent = styled.div`
   text-align: center;
 `;
 
-function EmployeeListItem({ employeesData }) {
-  // function handleDetail() {
-  //   // console.log("mouseOver");
-  // }
+function EmployeeListItem() {
+  const { employeesData } = useContext(EmployeeContext);
   function employeeList(employee) {
     return (
       <StyledEmplList key={employee._id}>

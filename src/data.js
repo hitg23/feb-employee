@@ -25,4 +25,4 @@ name: "Negede",
  sms: "0909789000",
  email: "mahi@gmail.com"
 }]
-export default employeeData
+export  {employeeData}

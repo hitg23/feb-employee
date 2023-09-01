@@ -9,13 +9,10 @@ export const StyledEmp = styled.div`
   flex-direction: column;
 `;
 
-function EmployeeList({ employeesData, setEmployessData }) {
+function EmployeeList() {
   return (
     <StyledEmp>
-      <EmployeeListItem
-        employeesData={employeesData}
-        setEmployessData={setEmployessData}
-      />
+      <EmployeeListItem />
     </StyledEmp>
   );
 }
