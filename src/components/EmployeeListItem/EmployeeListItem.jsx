@@ -2,15 +2,20 @@ import React from "react";
 import { useContext } from "react";
 import { styled } from "styled-components";
 import { EmployeeContext } from "../../Context";
-import EmployeeDetail from "../EmployeeDetail/EmployeeDetail";
+// import EmployeeDetail from "../EmployeeDetail/EmployeeDetail";
+import { Skeleton } from "@mui/material";
 
 export const StyledEmplList = styled.div`
   display: flex;
   background-color: lightblue;
   margin: 5px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
-
+  height: 35%;
   padding: 5px 10px;
+`;
+
+const StyledSkeleton = styled(Skeleton)`
+  margin-bottom: 10px;
 `;
 
 export const StyledImg = styled.img`
@@ -43,7 +48,8 @@ export const StyledContent = styled.div`
 // }
 
 function EmployeeListItem() {
-  const { employeesData, setEmployessDetail } = useContext(EmployeeContext);
+  const { employeesData, setEmployessDetail, isLoading, isError } =
+    useContext(EmployeeContext);
   const handleEmployee = (id) => {
     const EmployeeDetailInfo = employeesData.find(
       (employee) => employee.id === id
@@ -55,6 +61,14 @@ function EmployeeListItem() {
   return (
     <div>
       <>
+        {isLoading && (
+          <>
+            <StyledSkeleton variant="rounded" width={370} height={60} />
+            <StyledSkeleton variant="rounded" width={370} height={60} />
+            <StyledSkeleton variant="rounded" width={370} height={60} />
+            <StyledSkeleton variant="rounded" width={370} height={60} />
+          </>
+        )}
         {employeesData.map((employee) => {
           return (
             <StyledEmplList

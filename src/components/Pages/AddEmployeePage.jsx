@@ -1,15 +1,8 @@
 import React from "react";
+// import { useContext } from "react";
 import Container from "../Container/Container";
 import AddEmployee from "../AddEmployee/AddEmployee";
-export default function AddEmployeePage({ employeesData, setEmployeesData }) {
-  return (
-    <Container>
-      {
-        <AddEmployee
-          employeesData={employeesData}
-          setEmployeesData={setEmployeesData}
-        />
-      }
-    </Container>
-  );
+// import { EmployeeContext } from "../../Context";
+export default function AddEmployeePage() {
+  return <Container>{<AddEmployee />}</Container>;
 }

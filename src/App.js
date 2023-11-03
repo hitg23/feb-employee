@@ -7,6 +7,7 @@ import EmployeeListPage from './components/Pages/EmployeeListPage';
 import LogInPage from './components/Pages/LogInPage';
 import { EmployeeProvider } from './Context';
 
+
 const App= ()=> {
     return (
     <>
@@ -17,6 +18,7 @@ const App= ()=> {
         <Route path= '/add-employee' element= {<AddEmployeePage/>}/>
         <Route path= '/employee-list' element= {<EmployeeListPage />}/>
        <Route path= '/login' element= {<LogInPage/>}/>
+      
        
     </Routes> 
     </EmployeeProvider>

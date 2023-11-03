@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   StyledFormContainer,
   StyledForm,
@@ -7,16 +7,19 @@ import {
   StyledInput,
   StyledButton,
 } from "./StyledComponents";
+import { EmployeeContext } from "../../Context";
+import axios from "axios";
 
-export default function AddEmployee({ employeesData, setEmployeesData }) {
+export default function AddEmployee() {
+  const { employeesData, setEmployeesData } = useContext(EmployeeContext);
   const [formData, setFormData] = useState({
     name: "",
     title: "",
     imageUrl: "",
     callMobile: "",
     callOffice: "",
-    Sms: "",
-    Email: "",
+    sms: "",
+    email: "",
   });
   //Validation
   const [errors, setErrors] = useState({});
@@ -38,10 +41,10 @@ export default function AddEmployee({ employeesData, setEmployeesData }) {
     if (formData.name.trim() === "") {
       listOfErrors.name = "name can not be empty"; // {name:name can not be empty}
     }
-    if (formData.Email === "") {
-      listOfErrors.Email = "Email can not be empty";
-    } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.Email)) {
-      listOfErrors.Email = "invalid Email";
+    if (formData.email === "") {
+      listOfErrors.email = "Email can not be empty";
+    } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email)) {
+      listOfErrors.email = "invalid email";
     }
     if (formData.callMobile === "") {
       listOfErrors.callMobile = "callMobile can not be empty";
@@ -57,6 +60,17 @@ export default function AddEmployee({ employeesData, setEmployeesData }) {
     return Object.keys(listOfErrors).length === 0;
   };
 
+  const addEmployee = () => {
+    axios
+      .post("http://localhost:5000/api/employees/employee", formData)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formValidate()) {
@@ -68,12 +82,14 @@ export default function AddEmployee({ employeesData, setEmployeesData }) {
         imageUrl: "",
         callMobile: "",
         callOffice: "",
-        Sms: "",
-        Email: "",
+        sms: "",
+        email: "",
       });
     }
+    addEmployee();
+    console.log("formData", formData);
   };
-
+  console.log("errors", errors);
   return (
     <StyledFormContainer>
       <h2 style={{ textAlign: "center" }}>AddEmployee</h2>
@@ -153,21 +169,21 @@ export default function AddEmployee({ employeesData, setEmployeesData }) {
           <StyledLabel htmlFor="">SMS :</StyledLabel>
           <StyledInput
             onChange={handleChange}
-            name="Sms"
+            name="sms"
             type="text"
-            value={formData.Sms}
+            value={formData.sms}
           />
         </StyledInputWrapper>
         <StyledInputWrapper>
-          <StyledLabel htmlFor="">Email :</StyledLabel>
+          <StyledLabel htmlFor="">email :</StyledLabel>
           <StyledInput
             onChange={handleChange}
-            name="Email"
+            name="email"
             type="text"
-            value={formData.Email}
+            value={formData.email}
           />
         </StyledInputWrapper>
-        {errors.Email && (
+        {errors.email && (
           <p
             style={{
               margin: 0,
@@ -176,7 +192,7 @@ export default function AddEmployee({ employeesData, setEmployeesData }) {
               textAlign: "center",
             }}
           >
-            {errors.Email}
+            {errors.email}
           </p>
         )}
 
